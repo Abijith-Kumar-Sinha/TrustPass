@@ -1,0 +1,38 @@
+{
+  "title": "Pick the composition to build",
+  "question": "Three layouts in the Bench Analyzer world. Approve one, or name what to combine in the steer box (e.g. 'option 1 + the lamp matrix from 2'). Numbers in the images are placeholders; the build shows real pipeline output.",
+  "options": [
+    {
+      "id": "comp-1",
+      "label": "1 · Circuit-first panel",
+      "kicker": "YOUR PICK",
+      "thesis": "The locked circuit on the graticule leads; controls on the right; channels and the REJECT lamp underneath.",
+      "palette": ["#c9cbc4", "#2c3640", "#f2cf1d", "#1fb3d6", "#d4428a", "#d8322a"],
+      "materials": ["chassis", "graticule display", "rotary SOURCE knob"],
+      "viewport": "Display 62% left, controls right, CH1-CH3 readouts and REJECT lamp below, statement strip at the bottom.",
+      "risk": "The detection matrix and evidence live below the fold.",
+      "comp": ".impeccable/mocks/comp-1.png"
+    },
+    {
+      "id": "comp-2",
+      "label": "2 · Dual-trace + lamp matrix",
+      "thesis": "Your circuit vs what the compiler sees, stacked; the 5x3 lamp matrix and 1/4 vs 4/4 counters on the right.",
+      "palette": ["#c9cbc4", "#2c3640", "#f2cf1d", "#1fb3d6", "#d4428a", "#d8322a"],
+      "materials": ["control rail", "dual-trace display", "indicator lamp grid", "segment counters"],
+      "viewport": "Controls on a left rail, dual-trace center, lamp matrix right, channels and REJECT along the bottom.",
+      "risk": "Densest of the three; everything competes on one screen.",
+      "comp": ".impeccable/mocks/comp-2.png"
+    },
+    {
+      "id": "comp-3",
+      "label": "3 · Evidence-first",
+      "thesis": "The proof leads: output histograms on a noisy copy of the device, a huge REJECT lamp and ESP readout, a ledger of recent runs.",
+      "palette": ["#c9cbc4", "#2c3640", "#f2cf1d", "#1fb3d6", "#d4428a", "#d8322a"],
+      "materials": ["histogram graticule", "segment readout", "run ledger tape"],
+      "viewport": "Histogram display 66% left, REJECT lamp, ESP readout and channel rows right, run ledger at the bottom.",
+      "risk": "The locked circuit shrinks to an inset, so 'the compiler sees nothing' is quieter.",
+      "comp": ".impeccable/mocks/comp-3.png"
+    }
+  ],
+  "steer": true
+}

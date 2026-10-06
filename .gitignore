@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Impeccable build scratch (screenshots, diffs, crops); the approved comp, spec and plate sources stay
+.impeccable/review/
+.impeccable/crops/
+.impeccable/ref/
+.impeccable/tmp/
+.impeccable/questions/
+.impeccable/*.log
+.impeccable/mocks/*
+!.impeccable/mocks/comp-4.png
+!.impeccable/mocks/comp-4.png.json
+.impeccable/sheet/check*.png

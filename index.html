@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustPass · zero-trust quantum compilation</title>
+<meta name="description" content="Lock a quantum circuit before an untrusted compiler sees it, then prove what comes back is both correct and not sabotaged.">
+<link rel="preload" href="web/fonts/inria-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="web/fonts/kufam-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="web/style.css">
+<link rel="icon" href="assets/plates/lamp-red.png">
+</head>
+<body>
+<main class="page" id="top">
+
+  <section class="panel" aria-label="TrustPass analyzer front panel">
+    <img class="screw screw-tl" src="assets/plates/screw-tl.png" alt="">
+    <img class="screw screw-tr" src="assets/plates/screw-tr.png" alt="">
+    <img class="screw screw-bl" src="assets/plates/screw-bl.png" alt="">
+    <img class="screw screw-br" src="assets/plates/screw-br.png" alt="">
+
+    <header class="mod head">
+      <h1 class="wordmark">TrustPass</h1>
+      <p class="model">TP-1 Zero-Trust Quantum Compilation Analyzer</p>
+      <p class="prov" id="prov" aria-live="polite">FakeBrisbane · 127q · seed 7 · run 005</p>
+    </header>
+
+    <ol class="mod pipeline" aria-label="Pipeline">
+      <li class="key" data-stage="lock">Lock</li>
+      <li class="key" data-stage="compile">Untrusted compile</li>
+      <li class="key" data-stage="unlock">Unlock</li>
+      <li class="key lit" data-stage="verify">Verify</li>
+      <li class="key" data-stage="score">Score</li>
+    </ol>
+
+    <figure class="mod display" aria-labelledby="disp-title">
+      <div class="screen">
+        <p class="screen-title" id="disp-title">What the compiler sees — <span id="disp-keys">153</span> key angles · 0 numeric</p>
+        <svg class="traces" id="traces" viewBox="0 0 774 484" preserveAspectRatio="none" role="img" aria-label="Locked circuit as qubit traces"></svg>
+        <p class="screen-foot" id="disp-foot">282 ops · depth 150</p>
+        <div class="sweep" aria-hidden="true"></div>
+      </div>
+    </figure>
+
+    <div class="mod controls">
+      <div class="ctl source">
+        <p class="ctl-label">Source <small>(untrusted compiler)</small></p>
+        <div class="knob big" id="knob-source" role="slider" tabindex="0" aria-label="Untrusted compiler"
+             aria-valuemin="0" aria-valuemax="4" aria-valuenow="4" aria-valuetext="Saboteur">
+          <img src="assets/plates/source-knob.png" alt="" draggable="false">
+        </div>
+        <ul class="detents" id="det-source"></ul>
+      </div>
+      <div class="ctl circuit">
+        <p class="ctl-label">Circuit</p>
+        <div class="knob small" id="knob-circuit" role="slider" tabindex="0" aria-label="Victim circuit"
+             aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" aria-valuetext="Grover">
+          <img src="assets/plates/circuit-knob.png" alt="" draggable="false">
+        </div>
+        <ul class="detents" id="det-circuit"></ul>
+      </div>
+      <div class="ctl backend">
+        <p class="ctl-label">Backend</p>
+        <button class="lever" id="lever" role="switch" aria-checked="false" aria-label="Backend: Torino">
+          <span class="lever-l">Brisbane</span>
+          <span class="lever-body"><img src="assets/plates/backend-lever.png" alt="" draggable="false"></span>
+          <span class="lever-r">Torino</span>
+        </button>
+      </div>
+    </div>
+
+    <section class="mod matrix" aria-labelledby="mx-title">
+      <h2 id="mx-title">Detection matrix</h2>
+      <table id="matrix">
+        <thead><tr><th scope="col"><span class="sr">Compiler</span></th>
+          <th scope="col">CH1<br>Naive</th><th scope="col">CH2<br>QCEC</th><th scope="col">CH3<br>Fidelity</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="counters">
+        <div class="counter naive"><p>Naive test catches</p><output id="cnt-naive"><span class="ghost">8/8</span><span class="val">1/4</span></output></div>
+        <div class="counter tp"><p>TrustPass catches</p><output id="cnt-tp"><span class="ghost">8/8</span><span class="val">4/4</span></output></div>
+      </div>
+    </section>
+
+    <div class="mod readouts">
+      <article class="readout ch1">
+        <h3><span class="tab">CH1</span> Naive histogram test</h3>
+        <p class="row"><span class="lbl">TVD</span> <span class="num" id="r1-val">0.003</span><span class="st pass" id="r1-st">PASS</span></p>
+      </article>
+      <article class="readout ch2">
+        <h3><span class="tab">CH2</span> Formal equivalence (QCEC)</h3>
+        <p class="row"><span class="txt" id="r2-val">EQUIVALENT</span><span class="st pass" id="r2-st">PASS</span></p>
+      </article>
+      <article class="readout ch3">
+        <h3><span class="tab">CH3</span> Fidelity audit</h3>
+        <p class="row"><span class="lbl">ESP</span> <span class="txt num-s" id="r3-val">0.389 <small>vs</small> 0.710</span><span class="st fail" id="r3-st">FAIL</span></p>
+      </article>
+    </div>
+
+    <div class="mod verdict reject" id="verdict" role="status" aria-live="polite"><span id="verdict-word">REJECT</span></div>
+    <p class="mod reason" id="reason">Equivalent, but sabotaged: placed on qubits with 6.0% readout error vs 2.0% device median.</p>
+  </section>
+
+  <section class="bench" aria-label="Evidence and inspection">
+    <article class="unit evidence">
+      <header class="unit-head"><h2>CH3 · Fidelity audit, on a noisy copy of the device</h2><p class="unit-prov" id="ev-prov"></p></header>
+      <div class="unit-body">
+        <div class="screen hist"><svg id="hist" viewBox="0 0 900 360" role="img" aria-label="Output distribution: ideal, honest compile and returned circuit"></svg></div>
+        <dl class="specs" id="ev-specs"></dl>
+      </div>
+    </article>
+
+    <article class="unit inspect">
+      <header class="unit-head"><h2>Inspect the circuit</h2>
+        <div class="softkeys" role="tablist" aria-label="Circuit view">
+          <button role="tab" data-view="original" aria-selected="false">Your circuit</button>
+          <button role="tab" data-view="locked" aria-selected="true">What the compiler sees</button>
+          <button role="tab" data-view="final" aria-selected="false">What came back</button>
+        </div>
+      </header>
+      <div class="unit-body">
+        <div class="screen wide"><p class="screen-title" id="ins-title"></p><div class="scroll"><svg class="traces" id="ins-traces" viewBox="0 0 1200 300" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Circuit traces"></svg></div></div>
+        <dl class="specs" id="ins-specs"></dl>
+      </div>
+    </article>
+
+    <article class="unit ledger">
+      <header class="unit-head"><h2>Acquisition ledger</h2><p class="unit-prov">Every run you make on this panel, newest first.</p></header>
+      <ol class="tape" id="tape"></ol>
+    </article>
+
+    <article class="unit plate-info">
+      <header class="unit-head"><h2>Rating plate</h2><p class="unit-prov">What TrustPass assumes, measures and does not cover.</p></header>
+      <div class="rating">
+        <dl>
+          <dt>Threat model</dt><dd>The compiler is untrusted. Your machine is trusted. The hardware provider is a different party, and the compiler never sees your results.</dd>
+          <dt>Lock</dt><dd>Every single-qubit angle becomes a key symbol held on your machine. Decoy CX pairs give every qubit pair the same CX count at random positions. No name, metadata or global phase leaves.</dd>
+          <dt>Verify</dt><dd>Formal equivalence for every input (MQT QCEC) plus an output-map check catches Trojans. Estimated success probability from the device's calibration, against a free honest compile, catches sabotage that stays equivalent.</dd>
+          <dt>Cost</dt><dd id="cost-line">Locking adds two-qubit gates after compilation.</dd>
+          <dt>Out of scope</dt><dd>An attacker who sees your execution results (Grover's output is its secret). Scheduled compiles containing delays are rejected, not verified. The QAOA graph is hidden statistically, not exactly.</dd>
+          <dt>Red-teamed</dt><dd>Two rounds of independent attackers found 14 issues; each was re-verified, then fixed with a regression test or documented here.</dd>
+          <dt>Built on</dt><dd>Qiskit 2.5 · Qiskit Aer · MQT QCEC · IBM fake backends with real calibration data.</dd>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <p>TrustPass TP-1 · Q-HACK INDIA 2026 · Quantum Security &amp; Cryptography</p>
+    <p id="mode-note"></p>
+  </footer>
+</main>
+<script src="web/app.js" type="module"></script>
+</body>
+</html>

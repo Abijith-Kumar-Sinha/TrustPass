@@ -1,0 +1,417 @@
+{
+ "regions": [
+  {
+   "id": "chassis",
+   "kind": "texture",
+   "grid": "G0:G0",
+   "note": "warm grey powder-coated chassis ground, clean sample"
+  },
+  {
+   "id": "screw-tl",
+   "kind": "plate",
+   "box": {
+    "x": 0.0039,
+    "y": 0.0069,
+    "w": 0.026,
+    "h": 0.0463
+   },
+   "grid": "A0:A0",
+   "note": "slotted chrome panel screw, top left corner"
+  },
+  {
+   "id": "screw-tr",
+   "kind": "plate",
+   "box": {
+    "x": 0.9701,
+    "y": 0.0069,
+    "w": 0.026,
+    "h": 0.0463
+   },
+   "grid": "J0:J0",
+   "note": "slotted chrome panel screw, top right corner"
+  },
+  {
+   "id": "screw-bl",
+   "kind": "plate",
+   "box": {
+    "x": 0.0039,
+    "y": 0.9468,
+    "w": 0.026,
+    "h": 0.0463
+   },
+   "grid": "A9:A9",
+   "note": "slotted chrome panel screw, bottom left corner"
+  },
+  {
+   "id": "screw-br",
+   "kind": "plate",
+   "box": {
+    "x": 0.9701,
+    "y": 0.9468,
+    "w": 0.026,
+    "h": 0.0463
+   },
+   "grid": "J9:J9",
+   "note": "slotted chrome panel screw, bottom right corner"
+  },
+  {
+   "id": "wordmark",
+   "kind": "text",
+   "grid": "A0:B0",
+   "note": "TrustPass wordmark, heavy condensed sans, dark charcoal"
+  },
+  {
+   "id": "model-line",
+   "kind": "text",
+   "grid": "C0:F0",
+   "note": "thin vertical rule then TP-1 ZERO-TRUST QUANTUM COMPILATION ANALYZER, medium caps"
+  },
+  {
+   "id": "provenance",
+   "kind": "text",
+   "grid": "H0:J0",
+   "note": "FakeBrisbane \u00c2\u00b7 127q \u00c2\u00b7 seed 7 \u00c2\u00b7 run 005, small regular"
+  },
+  {
+   "id": "key-lock",
+   "kind": "control",
+   "grid": "A1:B1",
+   "note": "pipeline key LOCK, grey beveled rectangular key"
+  },
+  {
+   "id": "key-compile",
+   "kind": "control",
+   "grid": "C1:D1",
+   "note": "pipeline key UNTRUSTED COMPILE, grey beveled key"
+  },
+  {
+   "id": "key-unlock",
+   "kind": "control",
+   "grid": "E1:F1",
+   "note": "pipeline key UNLOCK, grey beveled key"
+  },
+  {
+   "id": "key-verify",
+   "kind": "control",
+   "grid": "G1:H1",
+   "note": "pipeline key VERIFY, lit amber backlit key"
+  },
+  {
+   "id": "key-score",
+   "kind": "control",
+   "grid": "I1:J1",
+   "note": "pipeline key SCORE, grey beveled key, thin rail joins all keys"
+  },
+  {
+   "id": "display-bezel",
+   "kind": "chrome",
+   "grid": "A2:F7",
+   "container": true,
+   "note": "dark slate bezel and screen with fine graticule grid"
+  },
+  {
+   "id": "display-header",
+   "kind": "text",
+   "grid": "A2:E2",
+   "note": "WHAT THE COMPILER SEES \u00e2\u20ac\u201d 153 KEY ANGLES \u00c2\u00b7 0 NUMERIC, cyan caps on dark screen"
+  },
+  {
+   "id": "trace-q0",
+   "kind": "control",
+   "grid": "A3:F3",
+   "note": "q0 label and yellow trace with hatched key pulses k000 k006 k012 and CX control dots"
+  },
+  {
+   "id": "trace-q1",
+   "kind": "control",
+   "grid": "A4:F4",
+   "note": "q1 label and cyan trace with hatched key pulses k003 k009 k015 and CX targets"
+  },
+  {
+   "id": "trace-q2",
+   "kind": "control",
+   "grid": "A5:F6",
+   "note": "q2 label and magenta trace with hatched key pulses"
+  },
+  {
+   "id": "display-axis",
+   "kind": "text",
+   "grid": "A7:F7",
+   "note": "axis ticks 0 25 50 75 100 125 150 and 282 OPS \u00c2\u00b7 DEPTH 150"
+  },
+  {
+   "id": "source-label",
+   "kind": "text",
+   "grid": "F2:G2",
+   "note": "SOURCE (UNTRUSTED COMPILER) caps label"
+  },
+  {
+   "id": "source-knob",
+   "kind": "plate",
+   "box": {
+    "x": 0.5534,
+    "y": 0.2708,
+    "w": 0.1016,
+    "h": 0.1991
+   },
+   "grid": "F3:G4",
+   "note": "large black ribbed rotary knob with white pointer line"
+  },
+  {
+   "id": "source-detents",
+   "kind": "text",
+   "grid": "G2:H4",
+   "note": "detent legends HONEST TROJAN VISIBLE TROJAN IN NOISE TROJAN DORMANT SABOTEUR with tick lines",
+   "box": {
+    "x": 0.6445,
+    "y": 0.2616,
+    "w": 0.0924,
+    "h": 0.2083
+   }
+  },
+  {
+   "id": "circuit-label",
+   "kind": "text",
+   "grid": "F5:F5",
+   "note": "CIRCUIT caps label"
+  },
+  {
+   "id": "circuit-knob",
+   "kind": "plate",
+   "box": {
+    "x": 0.5625,
+    "y": 0.5162,
+    "w": 0.0755,
+    "h": 0.1412
+   },
+   "grid": "F5:G6",
+   "note": "small black rotary knob with white pointer line"
+  },
+  {
+   "id": "circuit-detents",
+   "kind": "text",
+   "grid": "G5:G6",
+   "note": "detent legends GROVER QAOA VQE",
+   "box": {
+    "x": 0.6406,
+    "y": 0.5278,
+    "w": 0.0456,
+    "h": 0.1227
+   }
+  },
+  {
+   "id": "backend-label",
+   "kind": "text",
+   "grid": "F6:F7",
+   "note": "BACKEND caps label and BRISBANE legend"
+  },
+  {
+   "id": "backend-lever",
+   "kind": "plate",
+   "box": {
+    "x": 0.6133,
+    "y": 0.7014,
+    "w": 0.0521,
+    "h": 0.0926
+   },
+   "grid": "G7:G7",
+   "note": "chrome bat-handle lever toggle switch in round bezel"
+  },
+  {
+   "id": "backend-torino",
+   "kind": "text",
+   "grid": "G7:H7",
+   "note": "TORINO legend"
+  },
+  {
+   "id": "matrix-frame",
+   "kind": "chrome",
+   "grid": "H2:J7",
+   "container": true,
+   "note": "thin outlined panel for the detection matrix"
+  },
+  {
+   "id": "matrix-title",
+   "kind": "text",
+   "grid": "H2:I2",
+   "note": "DETECTION MATRIX caps title"
+  },
+  {
+   "id": "matrix-col-heads",
+   "kind": "text",
+   "grid": "I2:J2",
+   "note": "CH1 NAIVE, CH2 QCEC, CH3 FIDELITY column heads"
+  },
+  {
+   "id": "matrix-row-labels",
+   "kind": "text",
+   "grid": "H3:H5",
+   "note": "HONEST TROJAN VISIBLE TROJAN IN NOISE TROJAN DORMANT SABOTEUR row labels"
+  },
+  {
+   "id": "lamp-green",
+   "kind": "plate",
+   "box": {
+    "x": 0.8301,
+    "y": 0.2905,
+    "w": 0.0312,
+    "h": 0.0556
+   },
+   "grid": "I3:I3",
+   "note": "round glossy green indicator lamp"
+  },
+  {
+   "id": "lamp-red",
+   "kind": "plate",
+   "box": {
+    "x": 0.8301,
+    "y": 0.3507,
+    "w": 0.0312,
+    "h": 0.0556
+   },
+   "grid": "I3:I4",
+   "note": "round glossy red indicator lamp"
+  },
+  {
+   "id": "matrix-lamps",
+   "kind": "control",
+   "grid": "I3:J5",
+   "note": "5 by 3 grid of indicator lamps, state per check result",
+   "box": {
+    "x": 0.8255,
+    "y": 0.2847,
+    "w": 0.151,
+    "h": 0.3032
+   }
+  },
+  {
+   "id": "counter-labels",
+   "kind": "text",
+   "grid": "H6:J6",
+   "note": "NAIVE TEST CATCHES and TRUSTPASS CATCHES caps labels"
+  },
+  {
+   "id": "counter-naive",
+   "kind": "control",
+   "grid": "H7:I7",
+   "note": "dark segment display with yellow 1/4",
+   "box": {
+    "x": 0.7487,
+    "y": 0.6597,
+    "w": 0.1081,
+    "h": 0.0856
+   }
+  },
+  {
+   "id": "counter-trustpass",
+   "kind": "control",
+   "grid": "I7:J7",
+   "note": "dark segment display with green 4/4",
+   "box": {
+    "x": 0.8711,
+    "y": 0.6597,
+    "w": 0.1081,
+    "h": 0.0856
+   }
+  },
+  {
+   "id": "ch1-panel",
+   "kind": "chrome",
+   "grid": "A8:C9",
+   "container": true,
+   "note": "light readout panel CH1"
+  },
+  {
+   "id": "ch1-title",
+   "kind": "text",
+   "grid": "A8:C8",
+   "note": "yellow CH1 tab and NAIVE HISTOGRAM TEST"
+  },
+  {
+   "id": "ch1-value",
+   "kind": "text",
+   "grid": "A9:B9",
+   "note": "TVD 0.003 large figures"
+  },
+  {
+   "id": "ch1-status",
+   "kind": "text",
+   "grid": "C9:C9",
+   "note": "green PASS"
+  },
+  {
+   "id": "ch2-panel",
+   "kind": "chrome",
+   "grid": "C8:E9",
+   "container": true,
+   "note": "light readout panel CH2"
+  },
+  {
+   "id": "ch2-title",
+   "kind": "text",
+   "grid": "C8:E8",
+   "note": "cyan CH2 tab and FORMAL EQUIVALENCE (QCEC)"
+  },
+  {
+   "id": "ch2-value",
+   "kind": "text",
+   "grid": "C9:D9",
+   "note": "EQUIVALENT"
+  },
+  {
+   "id": "ch2-status",
+   "kind": "text",
+   "grid": "E9:E9",
+   "note": "green PASS"
+  },
+  {
+   "id": "ch3-panel",
+   "kind": "chrome",
+   "grid": "E8:G9",
+   "container": true,
+   "note": "light readout panel CH3"
+  },
+  {
+   "id": "ch3-title",
+   "kind": "text",
+   "grid": "E8:G8",
+   "note": "magenta CH3 tab and FIDELITY AUDIT"
+  },
+  {
+   "id": "ch3-value",
+   "kind": "text",
+   "grid": "E9:F9",
+   "note": "ESP 0.389 vs 0.710"
+  },
+  {
+   "id": "ch3-status",
+   "kind": "text",
+   "grid": "G9:G9",
+   "note": "red FAIL"
+  },
+  {
+   "id": "verdict-lamp",
+   "kind": "control",
+   "box": {
+    "x": 0.6901,
+    "y": 0.7986,
+    "w": 0.1263,
+    "h": 0.1667
+   },
+   "grid": "H8:H9",
+   "note": "square illuminated verdict button: thin dark charcoal bezel, lit face red for REJECT or green for ACCEPT, state from the pipeline"
+  },
+  {
+   "id": "verdict-word",
+   "kind": "text",
+   "grid": "H8:H9",
+   "note": "REJECT lettering on the lamp"
+  },
+  {
+   "id": "reason",
+   "kind": "text",
+   "grid": "I8:J9",
+   "note": "Equivalent, but sabotaged: placed on qubits with 6.0% readout error vs 2.0% device median."
+  }
+ ]
+}

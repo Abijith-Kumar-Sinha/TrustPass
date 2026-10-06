@@ -1,0 +1,6 @@
+{
+  "prompt": "Approved comp (Figma gpt-image-2.5-sunburst): combination of comp-1 (circuit-first Bench Analyzer panel) + comp-2's 5x3 lamp detection matrix with NAIVE 1/4 and TRUSTPASS 4/4 counters; real Grover/FakeBrisbane saboteur numbers (TVD 0.003, ESP 0.389 vs 0.710, 153 key angles, 282 ops depth 150).",
+  "approved": true,
+  "direction": "e259c9ec",
+  "note": "User approved the combination 1 + lamp matrix from 2 via the structured question tool (2026-10-07); comp-4 renders it."
+}

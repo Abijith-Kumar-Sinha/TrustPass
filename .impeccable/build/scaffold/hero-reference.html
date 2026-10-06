@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scaffold reference: comp-4.png</title>
+  <link rel="stylesheet" href="layout.css">
+  <style>html,body{margin:0}body{background:#c5c3bf}.region{box-sizing:border-box}.region.text p{white-space:pre-wrap}</style>
+</head>
+<body>
+<!-- Reference only. Every region sits at its measured box inside a comp-aspect frame. Take the boxes (layout.css), keep your own semantic structure. -->
+<main class="comp-frame" style="max-width:1536px">
+  <div class="r-chassis region texture" data-region="chassis" style="background-image:url('../../../assets/plates/chassis.png');background-repeat:repeat"></div>
+  <figure class="r-screw-tl region plate" data-region="screw-tl"><img src="../../../assets/plates/screw-tl.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <figure class="r-screw-tr region plate" data-region="screw-tr"><img src="../../../assets/plates/screw-tr.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <figure class="r-screw-bl region plate" data-region="screw-bl"><img src="../../../assets/plates/screw-bl.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <figure class="r-screw-br region plate" data-region="screw-br"><img src="../../../assets/plates/screw-br.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-wordmark region text" data-region="wordmark"><!-- TrustPass wordmark, heavy condensed sans, dark charcoal --><p style="line-height:1.05;margin:0">wordmark</p></div>
+  <div class="r-model-line region text" data-region="model-line"><!-- thin vertical rule then TP-1 ZERO-TRUST QUANTUM COMPILATION ANALYZER, medium caps --><p style="line-height:1.05;margin:0">model-line</p></div>
+  <div class="r-provenance region text" data-region="provenance"><!-- FakeBrisbane Â· 127q Â· seed 7 Â· run 005, small regular --><p style="line-height:1.05;margin:0">provenance</p></div>
+  <div class="r-key-lock region control" data-region="key-lock"><!-- pipeline key LOCK, grey beveled rectangular key: rebuild the control's chrome from the crop (comp-spec.mjs --crop key-lock); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-key-compile region control" data-region="key-compile"><!-- pipeline key UNTRUSTED COMPILE, grey beveled key: rebuild the control's chrome from the crop (comp-spec.mjs --crop key-compile); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-key-unlock region control" data-region="key-unlock"><!-- pipeline key UNLOCK, grey beveled key: rebuild the control's chrome from the crop (comp-spec.mjs --crop key-unlock); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-key-verify region control" data-region="key-verify"><!-- pipeline key VERIFY, lit amber backlit key: rebuild the control's chrome from the crop (comp-spec.mjs --crop key-verify); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-key-score region control" data-region="key-score"><!-- pipeline key SCORE, grey beveled key, thin rail joins all keys: rebuild the control's chrome from the crop (comp-spec.mjs --crop key-score); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-display-bezel region chrome" data-region="display-bezel"><!-- dark slate bezel and screen with fine graticule grid --></div>
+  <div class="r-display-header region text" data-region="display-header"><!-- WHAT THE COMPILER SEES â€” 153 KEY ANGLES Â· 0 NUMERIC, cyan caps on dark screen --><p style="line-height:1.05;margin:0">display-header</p></div>
+  <div class="r-trace-q0 region control" data-region="trace-q0"><!-- q0 label and yellow trace with hatched key pulses k000 k006 k012 and CX control dots: rebuild the control's chrome from the crop (comp-spec.mjs --crop trace-q0); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-trace-q1 region control" data-region="trace-q1"><!-- q1 label and cyan trace with hatched key pulses k003 k009 k015 and CX targets: rebuild the control's chrome from the crop (comp-spec.mjs --crop trace-q1); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-trace-q2 region control" data-region="trace-q2"><!-- q2 label and magenta trace with hatched key pulses: rebuild the control's chrome from the crop (comp-spec.mjs --crop trace-q2); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-display-axis region text" data-region="display-axis"><!-- axis ticks 0 25 50 75 100 125 150 and 282 OPS Â· DEPTH 150 --><p style="line-height:1.05;margin:0">display-axis</p></div>
+  <div class="r-source-label region text" data-region="source-label"><!-- SOURCE (UNTRUSTED COMPILER) caps label --><p style="line-height:1.05;margin:0">source-label</p></div>
+  <figure class="r-source-knob region plate" data-region="source-knob"><img src="../../../assets/plates/source-knob.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-source-detents region text" data-region="source-detents"><!-- detent legends HONEST TROJAN VISIBLE TROJAN IN NOISE TROJAN DORMANT SABOTEUR with tick lines --><p style="line-height:1.05;margin:0">source-detents</p></div>
+  <div class="r-circuit-label region text" data-region="circuit-label"><!-- CIRCUIT caps label --><p style="line-height:1.05;margin:0">circuit-label</p></div>
+  <figure class="r-circuit-knob region plate" data-region="circuit-knob"><img src="../../../assets/plates/circuit-knob.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-circuit-detents region text" data-region="circuit-detents"><!-- detent legends GROVER QAOA VQE --><p style="line-height:1.05;margin:0">circuit-detents</p></div>
+  <div class="r-backend-label region text" data-region="backend-label"><!-- BACKEND caps label and BRISBANE legend --><p style="line-height:1.05;margin:0">backend-label</p></div>
+  <figure class="r-backend-lever region plate" data-region="backend-lever"><img src="../../../assets/plates/backend-lever.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-backend-torino region text" data-region="backend-torino"><!-- TORINO legend --><p style="line-height:1.05;margin:0">backend-torino</p></div>
+  <div class="r-matrix-frame region chrome" data-region="matrix-frame"><!-- thin outlined panel for the detection matrix --></div>
+  <div class="r-matrix-title region text" data-region="matrix-title"><!-- DETECTION MATRIX caps title --><p style="line-height:1.05;margin:0">matrix-title</p></div>
+  <div class="r-matrix-col-heads region text" data-region="matrix-col-heads"><!-- CH1 NAIVE, CH2 QCEC, CH3 FIDELITY column heads --><p style="line-height:1.05;margin:0">matrix-col-heads</p></div>
+  <div class="r-matrix-row-labels region text" data-region="matrix-row-labels"><!-- HONEST TROJAN VISIBLE TROJAN IN NOISE TROJAN DORMANT SABOTEUR row labels --><p style="line-height:1.05;margin:0">matrix-row-labels</p></div>
+  <figure class="r-lamp-green region plate" data-region="lamp-green"><img src="../../../assets/plates/lamp-green.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <figure class="r-lamp-red region plate" data-region="lamp-red"><img src="../../../assets/plates/lamp-red.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-matrix-lamps region control" data-region="matrix-lamps"><!-- 5 by 3 grid of indicator lamps, state per check result: rebuild the control's chrome from the crop (comp-spec.mjs --crop matrix-lamps); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-counter-labels region text" data-region="counter-labels"><!-- NAIVE TEST CATCHES and TRUSTPASS CATCHES caps labels --><p style="line-height:1.05;margin:0">counter-labels</p></div>
+  <div class="r-counter-naive region control" data-region="counter-naive"><!-- dark segment display with yellow 1/4: rebuild the control's chrome from the crop (comp-spec.mjs --crop counter-naive); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-counter-trustpass region control" data-region="counter-trustpass"><!-- dark segment display with green 4/4: rebuild the control's chrome from the crop (comp-spec.mjs --crop counter-trustpass); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-ch1-panel region chrome" data-region="ch1-panel"><!-- light readout panel CH1 --></div>
+  <div class="r-ch1-title region text" data-region="ch1-title"><!-- yellow CH1 tab and NAIVE HISTOGRAM TEST --><p style="line-height:1.05;margin:0">ch1-title</p></div>
+  <div class="r-ch1-value region text" data-region="ch1-value"><!-- TVD 0.003 large figures --><p style="line-height:1.05;margin:0">ch1-value</p></div>
+  <div class="r-ch1-status region text" data-region="ch1-status"><!-- green PASS --><p style="line-height:1.05;margin:0">ch1-status</p></div>
+  <div class="r-ch2-panel region chrome" data-region="ch2-panel"><!-- light readout panel CH2 --></div>
+  <div class="r-ch2-title region text" data-region="ch2-title"><!-- cyan CH2 tab and FORMAL EQUIVALENCE (QCEC) --><p style="line-height:1.05;margin:0">ch2-title</p></div>
+  <div class="r-ch2-value region text" data-region="ch2-value"><!-- EQUIVALENT --><p style="line-height:1.05;margin:0">ch2-value</p></div>
+  <div class="r-ch2-status region text" data-region="ch2-status"><!-- green PASS --><p style="line-height:1.05;margin:0">ch2-status</p></div>
+  <div class="r-ch3-panel region chrome" data-region="ch3-panel"><!-- light readout panel CH3 --></div>
+  <div class="r-ch3-title region text" data-region="ch3-title"><!-- magenta CH3 tab and FIDELITY AUDIT --><p style="line-height:1.05;margin:0">ch3-title</p></div>
+  <div class="r-ch3-value region text" data-region="ch3-value"><!-- ESP 0.389 vs 0.710 --><p style="line-height:1.05;margin:0">ch3-value</p></div>
+  <div class="r-ch3-status region text" data-region="ch3-status"><!-- red FAIL --><p style="line-height:1.05;margin:0">ch3-status</p></div>
+  <div class="r-verdict-lamp region control" data-region="verdict-lamp"><!-- square illuminated verdict button: thin dark charcoal bezel, lit face red for REJECT or green for ACCEPT, state from the pipeline: rebuild the control's chrome from the crop (comp-spec.mjs --crop verdict-lamp); its ink box, border, fill, radius, and label size are the comp's --></div>
+  <div class="r-verdict-word region text" data-region="verdict-word"><!-- REJECT lettering on the lamp --><p style="line-height:1.05;margin:0">verdict-word</p></div>
+  <div class="r-reason region text" data-region="reason"><!-- Equivalent, but sabotaged: placed on qubits with 6.0% readout error vs 2.0% device median. --><p style="line-height:1.05;margin:0">reason</p></div>
+</main>
+</body>
+</html>
