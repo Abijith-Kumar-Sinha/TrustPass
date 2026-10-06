@@ -4,6 +4,8 @@
 
 Q-HACK INDIA 2026 (IBM Qiskit Fall Fest), Quantum Security & Cryptography track. Round 1 prototype.
 
+**Try it in your browser: https://abijith-kumar-sinha.github.io/TrustPass/** (a snapshot of real pipeline runs, nothing to install; run `python server.py` locally for live runs).
+
 ![The TrustPass TP-1 front panel: the locked circuit on the graticule, the SOURCE knob set to Saboteur, the detection matrix, three channel readouts and a red REJECT lamp](docs/panel.png)
 
 The interface is a bench instrument: put a circuit on the panel, turn **SOURCE** to pick the untrusted compiler, and read three channels. Every number on it comes from a real run of the pipeline below. Run it locally with `python server.py` (live runs), or open the static snapshot (`index.html` + `web/snapshot.json`, precomputed by the same pipeline) on any static host.
