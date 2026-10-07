@@ -39,7 +39,6 @@ function source() {
       } catch {}
     }
     state.snapshot = await (await fetch("web/snapshot.json")).json();
-    $("#mode-note").textContent = `Snapshot of real pipeline runs, generated ${state.snapshot.generated.slice(0, 10)}. Run server.py for live runs.`;
     return state.snapshot;
   })());
 }
@@ -347,7 +346,6 @@ screen.addEventListener("wheel", (e) => {
 // ---------- the bench: evidence, inspection, ledger ----------
 function renderBench(r) {
   const c = r.checks, ev = r.evidence, conf = r.confidentiality, ov = r.overhead, fd = c.fidelity;
-  $("#ev-prov").textContent = `${r.circuit.name} · ${MODES.find((m) => m[0] === r.mode)[1]} · ${r.backend.name} · run ${pad(r.run)}`;
   drawHist($("#hist"), ev);
   $("#ev-specs").innerHTML = spec([
     ["ESP", `<span class="big ${fd.passed ? "good" : "bad"}">${fmt(fd.esp)}</span> returned<br>${fmt(fd.esp_baseline)} honest compile`],
