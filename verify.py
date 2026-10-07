@@ -42,7 +42,8 @@ def check_function(original, compiled):
     except Exception as e:
         return done(False, f"unverifiable:{type(e).__name__}")
     crit = str(res.equivalence).split(".")[-1]
-    return done(crit in ("equivalent", "equivalent_up_to_global_phase", "equivalent_up_to_phase"), crit)
+    # Not 'equivalent_up_to_phase': that is a *relative* phase, i.e. a different unitary.
+    return done(crit in ("equivalent", "equivalent_up_to_global_phase"), crit)
 
 
 def counts(circ, shots=8192, seed=1, backend=None):
@@ -79,14 +80,24 @@ def _active(circ):
                    if inst.operation.name not in ("barrier", "delay")})
 
 
+def _not_native(circ, target):
+    """Any op the device can't run (unknown gate, or a 2q gate on an uncoupled pair)? esp() scores those as free."""
+    return any(inst.operation.name not in ("barrier", "delay") and not target.instruction_supported(
+        inst.operation.name, tuple(circ.find_bit(q).index for q in inst.qubits)) for inst in circ.data)
+
+
 def audit_fidelity(compiled, backend, reference, threshold=FIDELITY_RATIO):
-    """Is the circuit we got back much less likely to succeed than a free local compile?"""
+    """Is the circuit we got back much less likely to succeed than a free local compile?
+
+    Fails closed: a circuit with any op the device does not support is a REJECT ('not_native').
+    """
     t = backend.target
     ro = np.array([t["measure"][(q,)].error or 0.0 for q in range(t.num_qubits)])
     used = _active(compiled)
     e, e_ref = esp(compiled, t), esp(reference, t)
     ratio = e / e_ref if e_ref else 0.0
-    return {"passed": ratio >= threshold, "esp": round(e, 4), "esp_baseline": round(e_ref, 4),
+    verdict = "not_native" if _not_native(compiled, t) else "ok" if ratio >= threshold else "low_fidelity"
+    return {"passed": verdict == "ok", "verdict": verdict, "esp": round(e, 4), "esp_baseline": round(e_ref, 4),
             "ratio": round(ratio, 3), "qubits": used,
             "readout_err_used": round(float(ro[used].mean()), 4),
             "readout_err_device_median": round(float(np.median(ro)), 4)}

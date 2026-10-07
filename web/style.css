@@ -157,6 +157,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .counter .val { position: relative; }
 .counter.naive .val { color: var(--ch1); }
 .counter.tp .val { color: #5ee07a; }
+.matrix .legend { position: absolute; left: 0; right: 0; top: calc(100% + 10 * var(--u)); margin: 0; white-space: nowrap; text-align: center;
+  font: 700 calc(16 * var(--u)) / 1.2 "Inria Sans", sans-serif; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink); }
 
 /* channel readouts */
 .readouts { left: calc(33 * var(--u)); top: calc(700 * var(--u)); width: calc(1009 * var(--u)); height: calc(120 * var(--u));
@@ -237,6 +239,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .rating dl { margin: 0; display: grid; grid-template-columns: calc(190 * var(--u)) 1fr; gap: calc(12 * var(--u)) calc(24 * var(--u)); font-size: calc(19 * var(--u)); line-height: 1.45; }
 .rating dt { font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; font-size: calc(16 * var(--u)); padding-top: calc(3 * var(--u)); }
 .rating dd { margin: 0; max-width: 75ch; }
+.rating a { color: var(--ink); text-underline-offset: 0.2em; overflow-wrap: anywhere; }
 
 /* ---------- phones: the modules restack, --u follows the screen ---------- */
 @media (max-width: 760px) {

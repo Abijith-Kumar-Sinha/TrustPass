@@ -1,5 +1,6 @@
 """TrustPass checks. Run: python test_trustpass.py (or pytest). ~10 s."""
 from qiskit.circuit import CircuitInstruction, Delay, ParameterExpression
+from qiskit.circuit.library import CXGate, ECRGate, RZGate
 from qiskit.quantum_info import Operator
 from qiskit_ibm_runtime.fake_provider import FakeBrisbane, FakeTorino
 
@@ -9,7 +10,7 @@ from compilers import honest
 from lock import lock, random_key, unlock
 from pipeline import detection_matrix
 from score import confidentiality, secret_blind
-from verify import check_function
+from verify import audit_fidelity, check_function
 
 # mode -> (naive_test, equivalence, fidelity_audit, verdict): the pitch table
 EXPECTED = {
@@ -88,8 +89,20 @@ def test_verifier_fails_closed():
                                                         final.data[measures[0]].clbits))
     delayed = final.copy()
     delayed.data.insert(1, CircuitInstruction(Delay(100_000), [final.qubits[0]]))
-    for bad in (dropped, swapped, delayed):
+    phased = final.copy()  # relative-phase Trojan: rz on an output qubit right before its measurement
+    phased.data.insert(measures[0], CircuitInstruction(RZGate(0.35), final.data[measures[0]].qubits))
+    for bad in (dropped, swapped, delayed, phased):
         assert not check_function(qc, bad)["passed"]
+    # Self-cancelling pair on an uncoupled pair: equivalent, but ESP scored the ops as error-free.
+    cmap = be.target.build_coupling_map()
+    a, b = next((a, b) for a in range(be.num_qubits) for b in range(a)
+                if not cmap.graph.has_edge(a, b) and not cmap.graph.has_edge(b, a))
+    for gate in (CXGate(), ECRGate()):  # not a device gate at all / the native gate on the wrong pair
+        padded = final.copy()
+        for _ in range(2):
+            padded.data.insert(0, CircuitInstruction(gate, [final.qubits[a], final.qubits[b]]))
+        assert check_function(qc, padded)["passed"]  # so only the fidelity audit can catch it
+        assert audit_fidelity(padded, be, final)["verdict"] == "not_native"
 
 
 def test_view_never_depends_on_the_secret():

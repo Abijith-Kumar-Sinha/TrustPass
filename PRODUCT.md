@@ -21,7 +21,7 @@ TrustPass is zero-trust quantum compilation. A circuit is locked (every single-q
 
 ## Positioning
 
-To our knowledge, the only pipeline that combines circuit locking, formal functional verification and a fidelity-sabotage audit, and that red-teamed itself (14 findings across two rounds, each verified and fixed or documented).
+To our knowledge, the only pipeline that combines circuit locking, formal functional verification and a fidelity-sabotage audit, and that red-teamed itself (15 findings across two rounds and a final review, each verified and fixed, measured or documented).
 
 ## Operating Context
 

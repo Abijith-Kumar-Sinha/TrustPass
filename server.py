@@ -116,6 +116,8 @@ def reason(r):
     fn, fd = r["functional"], r["fidelity"]
     if r["trust"]["verdict"] == "ACCEPT":
         return "Equivalent to your circuit and as good as an honest compile. Safe to run."
+    if fd.get("verdict") == "not_native":
+        return "Contains gates the device cannot run (unknown gate or uncoupled qubit pair)."
     if fn["passed"]:
         return (f"Equivalent, but sabotaged: placed on qubits with {fd['readout_err_used']:.1%} readout error "
                 f"vs {fd['readout_err_device_median']:.1%} device median.")

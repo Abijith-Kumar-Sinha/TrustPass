@@ -101,12 +101,10 @@ function knob(sel, detents, center, getIndex, setIndex, labels) {
     return best;
   };
   let dragging = false;
-  el.addEventListener("pointerdown", (e) => { dragging = true; el.setPointerCapture(e.pointerId); });
-  el.addEventListener("pointermove", (e) => {
-    if (!dragging) return;
-    const i = nearest(e.clientX, e.clientY);
-    if (i !== getIndex()) setIndex(i);
-  });
+  const turnTo = (e) => { const i = nearest(e.clientX, e.clientY); if (i !== getIndex()) setIndex(i); };
+  // A click turns the knob to the detent nearest the pointer; holding the button drags it on.
+  el.addEventListener("pointerdown", (e) => { dragging = true; el.setPointerCapture(e.pointerId); turnTo(e); });
+  el.addEventListener("pointermove", (e) => { if (dragging) turnTo(e); });
   el.addEventListener("pointerup", () => { dragging = false; });
   el.addEventListener("keydown", (e) => {
     const step = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[e.key];
@@ -116,9 +114,11 @@ function knob(sel, detents, center, getIndex, setIndex, labels) {
     else return;
     e.preventDefault();
   });
-  el.addEventListener("wheel", (e) => {
+  el.addEventListener("wheel", (e) => {  // at an end stop the wheel scrolls the page instead
+    const i = Math.max(0, Math.min(detents.length - 1, getIndex() + Math.sign(e.deltaY)));
+    if (i === getIndex()) return;
     e.preventDefault();
-    setIndex(Math.max(0, Math.min(detents.length - 1, getIndex() + Math.sign(e.deltaY))));
+    setIndex(i);
   }, { passive: false });
   return show;
 }
@@ -331,12 +331,15 @@ function drawElement(g, e, cx, ys, id) {
   }
 }
 
-// Pan the display through the whole circuit (the scope's horizontal position).
+// Pan the display through the whole circuit (the scope's horizontal position) on a horizontal
+// wheel or Shift+wheel; a plain vertical wheel scrolls the page.
 const screen = $(".display .screen");
 screen.addEventListener("wheel", (e) => {
   if (!state.report) return;
+  const d = e.shiftKey ? e.deltaX || e.deltaY : Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+  if (!d) return;
   const cols = state.report.views.locked.cols.length;
-  const next = Math.max(0, Math.min(cols - 4, state.win + Math.sign(e.deltaX || e.deltaY) * 2));
+  const next = Math.max(0, Math.min(cols - 4, state.win + Math.sign(d) * 2));
   if (next === state.win) return;
   e.preventDefault();
   state.win = next;
@@ -358,8 +361,9 @@ function renderBench(r) {
   const b = r.blind;
   $("#ins-specs").innerHTML = spec([
     ["Key", `${conf.key_angles} angles stay on your machine`],
-    ["Skeleton", `${conf.visible_2q_gates} CX, ${Math.round(conf.decoy_share_of_2q * 100)}% decoys; every qubit pair carries the same count${conf.pair_count_spread ? ` (spread ${conf.pair_count_spread})` : ""}`],
-    ["Secret", b.same ? `<span class="good">${b.raw} different secrets → 1 identical view</span>` : `<span class="bad">view changes with the secret</span>`],
+    ["Skeleton", `${conf.visible_2q_gates} CX, ${conf.decoy_share_of_2q ? `${Math.round(conf.decoy_share_of_2q * 100)}% decoys; every qubit pair carries the same count`
+      : "no decoys needed: every qubit pair already carries the same count"}${conf.pair_count_spread ? ` (spread ${conf.pair_count_spread})` : ""}`],
+    ["Secret", b.same ? `<span class="good">${b.total} different secrets → 1 identical view</span>` : `<span class="bad">view changes with the secret</span>`],
     ["Wrong key", `output error ${conf.wrong_key_tvd_random_inputs} vs ${conf.know_nothing_tvd} for a random state`],
     ["Cost", `2q gates ${ov["2q_plain"]} → ${ov["2q_locked"]} · depth ${ov.depth_plain} → ${ov.depth_locked}`],
   ]);
