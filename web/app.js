@@ -29,17 +29,19 @@ function pick(v, allowed, dflt) { return allowed.includes(v) ? v : dflt; }
 
 // ---------- data ----------
 const matrixCache = new Map();
-async function source() {
-  if (state.snapshot !== null) return state.snapshot;
-  try {
-    const r = await fetch("/api/meta", { cache: "no-store" });
-    if (!r.ok) throw new Error();
-    state.snapshot = false;
-  } catch {
+let sourcing = null;  // one probe, shared by the run and matrix requests that race for it
+function source() {
+  return (sourcing ??= (async () => {
+    // GitHub Pages can never host the API, so don't probe there (it only adds console 404s).
+    if (!location.hostname.endsWith("github.io")) {
+      try {
+        if ((await fetch("/api/meta", { cache: "no-store" })).ok) return (state.snapshot = false);
+      } catch {}
+    }
     state.snapshot = await (await fetch("web/snapshot.json")).json();
     $("#mode-note").textContent = `Snapshot of real pipeline runs, generated ${state.snapshot.generated.slice(0, 10)}. Run server.py for live runs.`;
-  }
-  return state.snapshot;
+    return state.snapshot;
+  })());
 }
 async function getRun() {
   const snap = await source();
